@@ -99,9 +99,9 @@ function get_tweets( $handler = 'jabranr', $count = 10 )	{
 	// Prepare CURL options
 	$options = array(
 		CURLOPT_HTTPHEADER => $headers,
-	    CURLOPT_HEADER => false,
-	    CURLOPT_URL => $endpoint,
-	    CURLOPT_RETURNTRANSFER => true
+		CURLOPT_HEADER => false,
+		CURLOPT_URL => $endpoint,
+		CURLOPT_RETURNTRANSFER => true
   	);
 
   	// Initialize CURL
