@@ -90,6 +90,9 @@ function get_tweets( $handler = 'jabranr', $count = 10 )	{
 	// Get first time access token straight from function to avoid undefined index error
 	$access_token = !isset($_SESSION['_twitter_token']) && get_twitter_access_token();
 
+	// Get access token from session cache
+	$access_token = isset($_SESSION['_twitter_token']) && $_SESSION['_twitter_token'];
+
 	// Setup endpoint to make requests
 	$endpoint = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $handler . '&count=' . $count;
 
