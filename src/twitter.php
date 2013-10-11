@@ -4,14 +4,14 @@
  * Methods to fetch Twitter feed using Twitter API v1.1 and Oauth2
  *
  * @author: hello@jabran.me
- * @version: 1.0
+ * @version: 1.1
  * @package: Twitter API v1.1
  * @license: MIT License
  *
  */
 
 
-function text2html( $text = '' )	{
+function text2tweet( $text = '' )	{
 	
 	// Regex to match URL/Links in text
 	$reg_url = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
@@ -71,7 +71,7 @@ function get_twitter_access_token( $consumer_key = 'INSERT_CONSUMER_KEY', $consu
 		$oauthResponse = json_decode($oauthResponse);
 
 	// If a bearer type token found, return the token
-	if ( $oauthResponse && property_exists($oauthResponse, 'token_type') && $oauthResponse->token_type === 'bearer') )
+	if ( $oauthResponse && property_exists($oauthResponse, 'token_type') && $oauthResponse->token_type === 'bearer' )
 		return $oauthResponse->access_token;
 
 	// Otherwise return false
@@ -85,13 +85,9 @@ function get_tweets( $handler = 'jabranr', $count = 10 )	{
 
 	// Cache the access token to session to reuse and avoid continuous oAuth requests
 	if ( !isset($_SESSION['_twitter_token']) )
-		$_SESSION['_twitter_token'] = get_twitter_access_token();
-
-	// Get first time access token straight from function to avoid undefined index error
-	$access_token = !isset($_SESSION['_twitter_token']) && get_twitter_access_token();
-
-	// Get access token from session cache
-	$access_token = isset($_SESSION['_twitter_token']) && $_SESSION['_twitter_token'];
+		$access_token = get_twitter_access_token() && $_SESSION['_twitter_token'] = $access_token;
+	else 
+		$access_token = $_SESSION['_twitter_token'];
 
 	// Setup endpoint to make requests
 	$endpoint = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $handler . '&count=' . $count;
