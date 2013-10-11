@@ -11,7 +11,7 @@
 <h3>Step 3: Make request to get the required feed</h3>
 <p>Now that you have the <code>access token</code>, you can make requests to Twitter API endpoint and receive data in response. The request made at this stage also requires inclusion of <code>Authorization headers</code>.</p>
 
-<p>Now since all these results are returned in plain text and so are the links, hashtags and mentions in the tweets. This issue can easily be solved by using <strong>“regex match and replace”</strong> methods, that is available in this example as <code>text2html()</code> function.</p>
+<p>Now since all these results are returned in plain text and so are the links, hashtags and mentions in the tweets. This issue can easily be solved by using <strong>“regex match and replace”</strong> methods, that is available in this example as <code>text2tweet()</code> function.</p>
 
 <h2>License</h2>
 
