@@ -1,4 +1,9 @@
-<h1>Read Me</h1>
+
+# Depreciated
+
+### This project is no more maintained. Please use the new improved version of this project named as “Fetchwitter” and available at [https://github.com/jabranr/fetchwitter](https://github.com/jabranr/fetchwitter)
+
+===
 
 <h2>How to use / How it works</h2>
 
